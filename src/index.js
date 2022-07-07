@@ -1,8 +1,8 @@
-// import React from "./libs/react";
-// import ReactDOM from "./libs/react-dom";
+import React from "./libs/react";
+import ReactDOM from "./libs/react-dom";
 
-import React from "react";
-import ReactDOM from "react-dom";
+// import React from "react";
+// import ReactDOM from "react-dom";
 
 // const el = (
 //   <div className="wrap" style={{ background: "#00ff11" }}>
@@ -43,29 +43,52 @@ class Counter extends React.Component {
 
   /**
    * 合成事件和批量更新
-   * 1、一次事件处理函数中，假设 setState 在同步代码中进行调用，则会将多个 setState 操作合成为一次处理，处理的时机是在事件处理函数处理完成之后
-   * 2、假设 setState 在异步代码中进行调用（不管是宏任务还是微任务），则多个 setState 操作不会合成为一次处理
    * 结论：jsx 事件处理函数是 react 控制的，只要归 react 控制就是批量更新，不归 react 控制就是非批量更新
    */
-  handleIncrement = () => {
-    this.setState({
-      count: this.state.count + 1,
-    });
+  handleIncrement = (e) => {
+    console.log(e);
+    // debugger;
+
+    // this.setState(
+    //   {
+    //     count: this.state.count + 1,
+    //   }
+    //   // () => console.log("cb1")
+    // );
+    // console.log(this.state.count);
+    // this.setState(
+    //   {
+    //     count: this.state.count + 1,
+    //   }
+    //   // () => console.log("cb2")
+    // );
+    // console.log(this.state.count);
+    // ------- 函数 ------
+    this.setState(
+      (lastState) => ({
+        count: lastState.count + 1,
+      })
+      // () => console.log("cb3")
+    );
     console.log(this.state.count);
-    this.setState({
-      count: this.state.count + 1,
-    });
+    this.setState(
+      (lastState) => ({
+        count: lastState.count + 1,
+      })
+      // () => console.log("cb3")
+    );
     console.log(this.state.count);
     queueMicrotask(() => {
-      this.setState({
-        count: this.state.count + 1,
-      });
       console.log(this.state.count);
       this.setState({
         count: this.state.count + 1,
       });
       console.log(this.state.count);
-    }, 0);
+      this.setState({
+        count: this.state.count + 1,
+      });
+      console.log(this.state.count);
+    });
   };
 
   render() {
@@ -76,7 +99,9 @@ class Counter extends React.Component {
         </span>
         <span>{this.state.domain.provice}</span>
         <span>{this.state.domain.city}</span>
-        <button onClick={this.handleIncrement}>INCREMENT</button>
+        <button onClick={this.handleIncrement}>
+          <span>INCREMENT</span>
+        </button>
       </div>
     );
   }

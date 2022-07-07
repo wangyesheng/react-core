@@ -1,3 +1,5 @@
+import { addEvent } from "./event";
+
 /**
  * 1、将 vdom 变成真实dom
  * 2、将 vdom 上的属性同步更新到真实 dom 上
@@ -84,8 +86,9 @@ function updateProps(dom, newProps, oldProps) {
         dom.style[attr] = styleObj[attr];
       }
     } else if (/^on[A-Z]/.test(key)) {
-      const eventName = key.toLowerCase();
-      dom[eventName] = newProps[key];
+      // const eventName = key.toLowerCase();
+      // dom[eventName] = newProps[key];
+      addEvent(dom, key.toLowerCase(), newProps[key]);
     } else {
       // 给真实 dom 元素赋 class => el.className = 'xxx'
       dom[key] = newProps[key];
