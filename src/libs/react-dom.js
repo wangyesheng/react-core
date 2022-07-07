@@ -7,6 +7,7 @@
  * @param {*} contanier dom容器
  */
 function render(vdom, contanier) {
+  // debugger;
   const dom = createDOM(vdom);
   contanier.appendChild(dom);
 }
@@ -15,7 +16,7 @@ function render(vdom, contanier) {
  * 将 vdom 变成真实 dom
  * @param {*} param0
  */
-function createDOM(vdom) {
+export function createDOM(vdom) {
   if (typeof vdom === "string" || typeof vdom === "number") {
     return document.createTextNode(vdom);
   }
@@ -82,6 +83,9 @@ function updateProps(dom, newProps, oldProps) {
       for (const attr in styleObj) {
         dom.style[attr] = styleObj[attr];
       }
+    } else if (/^on[A-Z]/.test(key)) {
+      const eventName = key.toLowerCase();
+      dom[eventName] = newProps[key];
     } else {
       // 给真实 dom 元素赋 class => el.className = 'xxx'
       dom[key] = newProps[key];
@@ -105,7 +109,6 @@ function mountFunctionComponent(vdom) {
 function mountClassComponent(vdom) {
   const { type: ClassComponent, props } = vdom;
   const classInstance = new ClassComponent(props);
-  // 猜测：执行 render 方法的时候，@babel/plugin-react 插件会去寻找 React 包中的 createElement 方法，将 jsx 通过 AST 的方式转换为 React.createElement 方法创建出来的对象
   const _vdom = classInstance.render();
   const dom = createDOM(_vdom);
   classInstance.dom = dom;

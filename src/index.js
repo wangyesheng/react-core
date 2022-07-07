@@ -32,26 +32,39 @@ class Counter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      name: "Count",
       count: 0,
+      domain: {
+        provice: "-jiangsu-",
+        city: "-nantong-",
+      },
     };
   }
 
   handleIncrement = () => {
     let { count } = this.state;
     this.setState({
-      ...this.state,
       count: count + 1,
+      domain: {
+        provice: "-zhejiang-",
+        city: "-hangzhou-",
+      },
     });
   };
 
   render() {
     return (
       <div>
-        <span>Count: {this.state.count}</span>
+        <span>
+          {this.state.name}: {this.state.count}
+        </span>
+        <span>{this.state.domain.provice}</span>
+        <span>{this.state.domain.city}</span>
         <button onClick={this.handleIncrement}>INCREMENT</button>
       </div>
     );
   }
 }
 
+// 猜测：执行 render 方法之前，@babel/plugin-react 插件会去寻找 React 包中的 createElement 方法，将 jsx 通过 AST 的方式转换为 React.createElement 方法创建出来的对象
 ReactDOM.render(<Counter />, document.getElementById("root"));
