@@ -1,4 +1,4 @@
-import { createDOM } from "./react-dom";
+import { createDOM, compareVDOM } from "./react-dom";
 
 export const updateQueue = {
   isBatchingUpdate: false, // 当前是否处理批量更新模式
@@ -23,6 +23,10 @@ class Updater {
     if (typeof cb === "function") {
       this.callbacks.push(cb);
     }
+    this.emitUpdate();
+  }
+
+  emitUpdate(newProps) {
     if (updateQueue.isBatchingUpdate) {
       updateQueue.updaters.add(this);
     } else {
@@ -31,13 +35,27 @@ class Updater {
   }
 
   updateClassComponent() {
-    const { classInstance, pendingStates, callbacks } = this;
+    const { pendingStates, callbacks } = this;
     if (pendingStates.length > 0) {
       this.updateState();
-      classInstance.focusUpdate();
+      this.shouldComponentUpdate();
       callbacks.forEach((cb) => cb && cb());
       callbacks.length = 0;
     }
+  }
+
+  shouldComponentUpdate() {
+    const { classInstance } = this;
+    if (
+      classInstance.shouldComponentUpdate &&
+      !classInstance.shouldComponentUpdate(
+        classInstance.props,
+        classInstance.state
+      )
+    ) {
+      return;
+    }
+    classInstance.focusUpdate();
   }
 
   updateState() {
@@ -65,8 +83,13 @@ class Component {
   }
 
   focusUpdate() {
+    this.componentWillUpdate && this.componentWillUpdate();
     const newVDOM = this.render();
-    updateClassComponent(this, newVDOM);
+    const oldVDOM = this._vdom;
+    const comparedVDOM = compareVDOM(oldVDOM.dom.parentNode, oldVDOM, newVDOM);
+    this._vdom = comparedVDOM;
+    // updateClassComponent(this, newVDOM);
+    this.componentDidUpdate && this.componentDidUpdate();
   }
 
   render() {

@@ -9,14 +9,14 @@ import { addEvent } from "./event";
  * @param {*} contanier dom容器
  */
 function render(vdom, contanier) {
-  // debugger;
   const dom = createDOM(vdom);
   contanier.appendChild(dom);
+  dom.componentDidMount && dom.componentDidMount();
 }
 
 /**
  * 将 vdom 变成真实 dom
- * @param {*} param0
+ * @param {*} vdom
  */
 export function createDOM(vdom) {
   if (typeof vdom === "string" || typeof vdom === "number") {
@@ -73,7 +73,7 @@ export function createDOM(vdom) {
   } else {
     dom.textContent = props.children ? props.children.toString() : "";
   }
-  vdom.dom = dom;
+  // vdom.dom = dom;
   return dom;
 }
 
@@ -86,8 +86,6 @@ function updateProps(dom, newProps, oldProps) {
         dom.style[attr] = styleObj[attr];
       }
     } else if (/^on[A-Z]/.test(key)) {
-      // const eventName = key.toLowerCase();
-      // dom[eventName] = newProps[key];
       addEvent(dom, key.toLowerCase(), newProps[key]);
     } else {
       // 给真实 dom 元素赋 class => el.className = 'xxx'
@@ -106,16 +104,74 @@ function reconcileChildren(childrenVDOM, parentDOM) {
 function mountFunctionComponent(vdom) {
   const { type: FunctionComponent, props } = vdom;
   const _vdom = FunctionComponent(props);
-  return createDOM(_vdom);
+  vdom._vdom = _vdom;
+  const dom = createDOM(_vdom);
+  vdom._vdom.dom = dom;
+  return dom;
 }
 
 function mountClassComponent(vdom) {
   const { type: ClassComponent, props } = vdom;
+
   const classInstance = new ClassComponent(props);
+
+  classInstance.componentWillMount && classInstance.componentWillMount();
+
   const _vdom = classInstance.render();
+  classInstance._vdom = _vdom;
+
   const dom = createDOM(_vdom);
-  classInstance.dom = dom;
+  classInstance._vdom.dom = dom;
+  classInstance._vdom.classInstance = classInstance;
+
+  classInstance.componentDidMount &&
+    (dom.componentDidMount =
+      classInstance.componentDidMount.bind(classInstance));
+
   return dom;
+}
+
+export function compareVDOM(parentDOM, oldVDOM, newVDOM, anchorDOM) {
+  if (!oldVDOM && !newVDOM) {
+    return null;
+  } else if (oldVDOM && !newVDOM) {
+    parentDOM.removeChild(oldVDOM.dom);
+    // 执行卸载函数
+    callComponentWillMount(oldVDOM.classInstance);
+    return null;
+  } else if (!oldVDOM && newVDOM) {
+    const newDOM = createDOM(newVDOM);
+    if (anchorDOM) {
+      parentDOM.insertBefore(newDOM, anchorDOM);
+    } else {
+      parentDOM.appendChild(newDOM);
+    }
+    return newVDOM;
+  } else if (oldVDOM && newVDOM && oldVDOM.type !== newVDOM.type) {
+    const oloDOM = oldVDOM.dom;
+    const newDOM = createDOM(newVDOM);
+    parentDOM.repalceChild(newDOM, oloDOM);
+    callComponentWillMount(oldVDOM.classInstance);
+    return newVDOM;
+  } else if (oldVDOM && newVDOM && oldVDOM.type === newVDOM.type) {
+    // dom-diff
+    // 1、更新自己身上的属性；2、深度比较孩子们
+    updateElement(oldVDOM, newVDOM);
+    return newVDOM;
+  }
+}
+
+function callComponentWillMount(classInstance) {
+  classInstance &&
+    classInstance.componentWillMount &&
+    classInstance.componentWillMount();
+}
+
+function updateElement(oldVDOM, newVDOM) {
+  if (typeof oldVDOM.type === "string") {
+    let currentDOM = (newVDOM.dom = oldVDOM.dom);
+    updateProps(currentDOM, newVDOM.props, oldVDOM.props);
+  }
 }
 
 export default { render };
