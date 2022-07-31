@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <style>
+      div.wrap {
+        width: 400px;
+        border: 2px solid #cc8e35;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -200px;
+        margin-top: -200px;
+        /* transform: translate(-50%, -50%);  */
+        /* overflow: hidden; */
+      }
+      div.wrap::after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+
+      div > img {
+        width: 100%;
+        float: left;
+      }
+
+      div > span {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        background: rgb(211, 113, 71);
+        box-shadow: 2px 2px 28px rgb(211 113 71 / 50%);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        font-size: 14px;
+        line-height: 3.5em;
+        text-align: center;
+        color: #fff;
+        position: sticky;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <img src="img/1.jpeg" alt="" />
+      <span>稻香</span>
+    </div>
+  </body>
+</html>

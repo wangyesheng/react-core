@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #2c2c54;
+      }
+
+      a {
+        text-decoration: none;
+        color: #fff;
+        background: #ff5252;
+        width: 200px;
+        height: 50px;
+        font-weight: 600;
+        font-size: 1.5em;
+        position: relative;
+        text-align: center;
+        line-height: 2em;
+        letter-spacing: 0.5em;
+        transition: 1s;
+      }
+
+      a:hover {
+        transform: skew(15deg, -15deg);
+      }
+
+      a::before {
+        content: "";
+        width: 10px;
+        height: 100%;
+        background: #000;
+        position: absolute;
+        left: -10px;
+        transform: skewY(-45deg) translateY(5px);
+      }
+
+      a::after {
+        content: "";
+        width: 100%;
+        height: 10px;
+        background: #000;
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        /*           倾斜 -45°      */
+        transform: skewX(-45deg) translateX(-5px);
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#">DNA UI</a>
+  </body>
+</html>

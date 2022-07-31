@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #2c2c54;
+      }
+
+      .clock {
+        width: 300px;
+        height: 300px;
+        background: linear-gradient(to right, #ff5252, #ff793f, #ffb142);
+        border-radius: 50%;
+        position: relative;
+      }
+
+      .clock::after {
+        content: "";
+        width: 90%;
+        height: 90%;
+        background: #2c2c54;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        z-index: 2;
+      }
+
+      .clock > .line {
+        width: 80%;
+        height: 80%;
+        background: #2c2c54;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        z-index: 3;
+      }
+
+      .clock > .line::after {
+        content: "";
+        width: 90%;
+        height: 90%;
+        background: #2c2c54;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        z-index: 5;
+      }
+
+      .clock > .line::before {
+        content: "";
+        width: 20px;
+        height: 20px;
+        border-radius: 100%;
+        background: #fff;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 6;
+      }
+
+      .clock > .line > div {
+        width: 5px;
+        height: 100%;
+        background: #fff;
+        position: absolute;
+        left: 50%;
+        z-index: 4;
+      }
+
+      .clock > .line > div:nth-of-type(1) {
+        transform: translateX(-50%) rotate(0deg);
+      }
+      .clock > .line > div:nth-of-type(2) {
+        transform: translateX(-50%) rotate(30deg);
+      }
+      .clock > .line > div:nth-of-type(3) {
+        transform: translateX(-50%) rotate(60deg);
+      }
+      .clock > .line > div:nth-of-type(4) {
+        transform: translateX(-50%) rotate(90deg);
+      }
+      .clock > .line > div:nth-of-type(5) {
+        transform: translateX(-50%) rotate(120deg);
+      }
+      .clock > .line > div:nth-of-type(6) {
+        transform: translateX(-50%) rotate(150deg);
+      }
+
+      .hour {
+        width: 8px;
+        height: 15%;
+        background: #fff;
+        position: absolute;
+        bottom: 50%;
+        left: 50%;
+        transform: translateX(-50%) rotate(0deg);
+        transform-origin: bottom;
+        z-index: 4;
+      }
+
+      .minute {
+        width: 5px;
+        height: 22%;
+        background: #fff;
+        position: absolute;
+        bottom: 50%;
+        left: 50%;
+        transform: translateX(-50%) rotate(45deg);
+        transform-origin: bottom;
+        z-index: 4;
+      }
+
+      .second {
+        width: 2px;
+        height: 30%;
+        background: #fff;
+        position: absolute;
+        bottom: 50%;
+        left: 50%;
+        transform: translateX(-50%) rotate(0deg);
+        transform-origin: bottom;
+        z-index: 4;
+      }
+
+      /* .clock:hover .second {
+        transform: translateX(-50%) rotate(730deg);
+      }
+
+      .clock:hover .minute {
+        transform: translateX(-50%) rotate(60deg);
+      } */
+    </style>
+  </head>
+  <body>
+    <div class="clock">
+      <div class="line">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="hour"></div>
+      <div class="minute"></div>
+      <div class="second"></div>
+    </div>
+  </body>
+
+  <script>
+    const second = document.querySelector(".second");
+    let offest = 6;
+    setInterval(() => {
+      offest += 6;
+      second.style.transform = `translateX(-50%) rotate(${offest}deg)`;
+    }, 1000);
+  </script>
+</html>

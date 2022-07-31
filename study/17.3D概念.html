@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #2c2c54;
+      }
+
+      .wrap {
+        width: 300px;
+        height: 300px;
+        display: flex;
+        border: 2px solid #706fd3;
+        position: relative;
+        /* 呈现3D空间,将z轴也绘制出来 */
+        transform-style: preserve-3d;
+        /* 透视900px  沿y轴转45° */
+        transform: perspective(900px) rotateY(45deg);
+      }
+
+      .wrap > div {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background-color: #33d9b2;
+      }
+
+      .wrap > div + div {
+        background-color: #34ace0;
+        /* 沿z轴移动300px */
+        transform: translateZ(-300px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div></div>
+      <div></div>
+    </div>
+  </body>
+</html>

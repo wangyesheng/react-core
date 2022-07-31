@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <style>
+      .wrap {
+        text-transform: uppercase;
+        width: 200px;
+        height: auto;
+        color: #2f3640;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+      }
+
+      .wrap:hover::before {
+        display: inline-block;
+        padding: 5px;
+        content: attr(data-link);
+        border: 1px solid #353b48;
+        position: absolute;
+        top: 20px;
+        left: 10px;
+      }
+
+      .field {
+        margin: 50px;
+        position: relative;
+        transition: 1s;
+        width: 200px;
+      }
+
+      .field:after {
+        content: "";
+        display: block;
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          #fff,
+          #e84118,
+          #4cd137,
+          #00a8ff,
+          #fff
+        );
+      }
+
+      .field:hover::before {
+        content: "请输入文本";
+        position: absolute;
+        top: -20px;
+        color: #4b4b4b;
+        font-size: 12px;
+      }
+
+      .field > input {
+        border: none;
+        outline: none;
+        width: 100%;
+      }
+
+      .float-wrap {
+        border: 1px solid #2c2c54;
+        height: 50px;
+      }
+
+      .float-wrap > div {
+        width: 200px;
+        height: 100%;
+        border: 1px solid #474787;
+        /* display: inline-block; */
+        float: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap" data-link="DAN UI">eos</div>
+
+    <div class="field">
+      <input type="text" />
+    </div>
+
+    <div class="float-wrap">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </body>
+</html>

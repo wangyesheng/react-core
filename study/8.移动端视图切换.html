@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .main {
+        flex: 1;
+        position: relative;
+        background: #2c2c54;
+      }
+
+      .main::after {
+        content: "DNA UI";
+        font-size: 3.5em;
+        color: #fff;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .navbar {
+        width: 100%;
+        height: 8vh;
+        background: #2c2c54;
+        display: flex;
+        align-items: center;
+      }
+
+      .navbar > a {
+        text-decoration: none;
+        color: #fff;
+        flex: 1;
+        text-align: center;
+        text-transform: uppercase;
+        box-sizing: border-box;
+      }
+
+      .navbar > a:nth-child(2) {
+        border-left: 1px solid #d2dae2;
+        border-right: 1px solid #d2dae2;
+      }
+
+      .main > div {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        font-size: 3.5em;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: translateY(-100%);
+        transition: 1s;
+        text-transform: uppercase;
+      }
+
+      .main > div:target {
+        transform: translateY(0);
+        z-index: 999;
+      }
+
+      .main > div:nth-of-type(1):target {
+        background: #3dc1d3;
+      }
+
+      .main > div:nth-of-type(2):target {
+        background: #0be881;
+      }
+
+      .main > div:nth-of-type(3):target {
+        background: #ffc048;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div id="home">home</div>
+      <div id="video">video</div>
+      <div id="me">me</div>
+    </div>
+    <div class="navbar">
+      <a href="#home">home</a>
+      <a href="#video">video</a>
+      <a href="#me">me</a>
+    </div>
+  </body>
+</html>

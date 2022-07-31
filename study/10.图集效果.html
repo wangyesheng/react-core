@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #2c2c54;
+      }
+
+      .wrap {
+        height: 200px;
+        display: flex;
+      }
+
+      .wrap > img {
+        height: 100%;
+        border: 2px solid #d1ccc0;
+        border-radius: 5px;
+        transition: 1s;
+        filter: blur(1px);
+        cursor: pointer;
+      }
+
+      .wrap > img:nth-child(n + 2) {
+        margin-left: 50px;
+      }
+
+      .wrap > img:hover {
+        transform: scale(1.2);
+        filter: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <img src="img/phos/3.jpg" alt="" />
+      <img src="img/phos/1.jpeg" alt="" />
+      <img src="img/phos/2.jpeg" alt="" />
+    </div>
+  </body>
+</html>

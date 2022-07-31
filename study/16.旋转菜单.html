@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css"
+    />
+    <link rel="stylesheet" href="css/reset.css" />
+
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #2c2c54;
+      }
+
+      ul {
+        width: 200px;
+        height: 200px;
+        /* background-color: #40407a; */
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+      }
+
+      li {
+        width: 50px;
+        height: 50px;
+        background-color: #ff5252;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5em;
+        border-radius: 50%;
+        color: #fff;
+        transition: 1s;
+        /* 按照什么位置开始变换: x轴偏移150px y轴偏移150px */
+        transform-origin: 100px 100px;
+      }
+
+      ul > li > span {
+        transition: 0.5s;
+      }
+
+      ul:hover li:nth-of-type(1) {
+        transform: rotate(40deg);
+      }
+      ul:hover li:nth-of-type(1) span {
+        transform: rotate(320deg);
+      }
+
+      ul:hover li:nth-of-type(2) {
+        transform: rotate(80deg);
+      }
+      ul:hover li:nth-of-type(2) span {
+        transform: rotate(640deg);
+      }
+
+      ul:hover li:nth-of-type(3) {
+        transform: rotate(120deg);
+      }
+      ul:hover li:nth-of-type(3) span {
+        transform: rotate(960deg);
+      }
+
+      ul:hover li:nth-of-type(4) {
+        transform: rotate(160deg);
+      }
+      ul:hover li:nth-of-type(4) span {
+        transform: rotate(1280deg);
+      }
+
+      ul:hover li:nth-of-type(5) {
+        transform: rotate(200deg);
+      }
+      ul:hover li:nth-of-type(5) span {
+        transform: rotate(1600deg);
+      }
+
+      ul:hover li:nth-of-type(6) {
+        transform: rotate(240deg);
+      }
+      ul:hover li:nth-of-type(6) span {
+        transform: rotate(1920deg);
+      }
+
+      ul:hover li:nth-of-type(7) {
+        transform: rotate(280deg);
+      }
+      ul:hover li:nth-of-type(7) span {
+        transform: rotate(2240deg);
+      }
+
+      ul:hover li:nth-of-type(8) {
+        transform: rotate(320deg);
+      }
+      ul:hover li:nth-of-type(8) span {
+        transform: rotate(2560deg);
+      }
+
+      ul:hover li:nth-of-type(9) {
+        transform: rotate(360deg);
+      }
+      ul:hover li:nth-of-type(9) span {
+        transform: rotate(3240deg);
+      }
+
+      .wrap {
+        background: #ff5252;
+        width: 100px;
+        height: 100px;
+        position: relative;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+
+      .wrap:hover ul {
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      .wrap::after {
+        content: "DNA UI";
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        font-size: 1.2em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <ul>
+        <!-- li{$}*9 快捷键 -->
+        <li>
+          <span><i class="fa fa-home"></i></span>
+        </li>
+        <li>
+          <span><i class="fa fa-cloud"></i></span>
+        </li>
+        <li>
+          <span><i class="fa fa-dashboard"></i></span>
+        </li>
+        <li>
+          <span><i class="fa fa-paw"></i></span>
+        </li>
+        <li>
+          <span><i class="fa fa-shopping-bag"></i></span>
+        </li>
+        <li>
+          <span><i class="fa fa-cab"></i></span>
+        </li>
+        <li>
+          <span><i class="fa fa-codepen"></i></span>
+        </li>
+        <li>
+          <span><i class="fa fa-github"></i></span>
+        </li>
+        <li>
+          <span><i class="fa fa-bicycle"></i></span>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

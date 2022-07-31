@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      body > div {
+        width: 400px;
+        height: 400px;
+        border: solid 5px #ccc;
+        box-sizing: border-box;
+        padding: 10px;
+        background-clip: content-box;
+        position: relative;
+        background: rgba(243, 238, 229, 0.2);
+      }
+
+      body > div::after {
+        content: "transform-origin: 旋转中心点";
+        display: none;
+        transition: 1s;
+      }
+
+      body > div:hover::after {
+        display: block;
+      }
+
+      body > div > div {
+        width: 150px;
+        height: 150px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -75px;
+        margin-top: -75px;
+        transition: 1s;
+      }
+
+      body > div > div:nth-of-type(1) {
+        background: #ff793f;
+        transform-origin: center center;
+      }
+
+      body > div:hover > div:nth-of-type(1) {
+        transform: rotate(360deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div></div>
+    </div>
+  </body>
+</html>
