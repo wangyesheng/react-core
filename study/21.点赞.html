@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css"
+    />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #2c2c54;
+      }
+
+      .thumbs {
+        position: relative;
+      }
+
+      .thumbs > i.fa {
+        position: absolute;
+        font-size: 50px;
+        color: #d1ccc0;
+        transition: 0.8s;
+        cursor: pointer;
+      }
+      .thumbs.active > i.fa {
+        transform: scale(3);
+        color: #ff5252;
+        opacity: 0;
+      }
+
+      .thumbs.active > i.fa:nth-child(2) {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      .thumbs:nth-child(3) {
+        left: 100px;
+      }
+
+      .thumbs:nth-child(1) {
+        left: -100px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <div class="thumbs">
+      <i class="fa fa-hand-o-up"></i>
+      <i class="fa fa-hand-o-up"></i>
+    </div>
+
+    <div class="thumbs">
+      <i class="fa fa-thumbs-o-up"></i>
+      <i class="fa fa-thumbs-o-up"></i>
+    </div> -->
+
+    <div class="thumbs">
+      <i class="fa fa-heart"></i>
+      <i class="fa fa-heart"></i>
+    </div>
+
+    <script>
+      const el = document.querySelector(".thumbs");
+      el.addEventListener("click", (e) => {
+        el.className = "thumbs active";
+      });
+    </script>
+  </body>
+</html>

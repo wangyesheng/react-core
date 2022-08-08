@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="never" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css"
+    />
+    <link rel="stylesheet" href="css/reset.css" />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #2c2c54;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 800px;
+        height: 160px;
+        display: flex;
+        justify-content: space-evenly;
+        position: relative;
+      }
+
+      li {
+        /* 原始状态 */
+        background: #f53b57;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        animation-duration: 2s;
+        animation-delay: 2s;
+      }
+
+      li:nth-of-type(1) {
+        animation-name: scale;
+      }
+
+      li:nth-of-type(2) {
+        animation-name: scale;
+        /* 起始的时候不是原始状态而是0帧（包含动画延时），动画结束之后回到初始状态 */
+        animation-fill-mode: backwards;
+      }
+
+      li:nth-of-type(3) {
+        animation-name: scale;
+        /* 动画结束之后采用结束帧状态 */
+        animation-fill-mode: forwards;
+      }
+
+      li:nth-of-type(4) {
+        animation-name: scale;
+        /* 起始的时候不是原始状态而是0帧（包含动画延时），动画结束之后采用结束帧状态 */
+        animation-fill-mode: both;
+      }
+
+      @keyframes scale {
+        from {
+          /* 0帧状态 */
+          transform: scale(0);
+        }
+        to {
+          transform: scale(1);
+          background: #00d8d6;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>normal</li>
+      <li>backwards</li>
+      <li>forwards</li>
+      <li>both</li>
+    </ul>
+  </body>
+</html>

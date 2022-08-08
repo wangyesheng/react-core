@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="never" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css"
+    />
+    <link rel="stylesheet" href="css/reset.css" />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #2c2c54;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 1200px;
+        height: 160px;
+        display: flex;
+        position: relative;
+      }
+
+      li {
+        flex: 1;
+        color: #f53b57;
+        display: flex;
+        justify-content: center;
+        position: relative;
+      }
+
+      i.fa {
+        font-size: 3em;
+        animation-name: scale;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        position: absolute;
+      }
+
+      span {
+        position: absolute;
+        bottom: 0;
+        font-size: 2em;
+        font-weight: 600;
+        font-style: italic;
+        color: #ffd32a;
+      }
+
+      li:nth-of-type(1) > i {
+        /* 动画执行的方向：从0到100有过渡效果，从100到0一瞬间就回去，默认为normal */
+        animation-direction: normal;
+      }
+
+      li:nth-of-type(2) > i {
+        /* 动画执行的方向：从100到0有过渡效果，从0到100一瞬间就回去 */
+        animation-direction: reverse;
+      }
+
+      li:nth-of-type(3) > i {
+        /* 动画执行的方向：从100到0有过渡效果，从0到100也有过渡效果 */
+        animation-direction: alternate;
+      }
+
+      li:nth-of-type(4) > i {
+        /* 动画执行的方向：从100到0有过渡效果，从0到100也有过渡效果 */
+        animation-direction: alternate-reverse;
+      }
+
+      /* ul::before {
+        content: "";
+        height: 128px;
+        width: 128px;
+        background: url(img/tiger.png) no-repeat 0 0;
+        position: absolute;
+        bottom: 230px;
+        left: -100px;
+        transform: rotate(-45deg);
+      } */
+
+      @keyframes scale {
+        to {
+          transform: scale(3);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>
+        <i class="fa fa-heart"></i>
+        <span>normal</span>
+      </li>
+      <li>
+        <i class="fa fa-heart"></i>
+        <span>reverse</span>
+      </li>
+      <li>
+        <i class="fa fa-heart"></i>
+        <span>alternate</span>
+      </li>
+      <li>
+        <i class="fa fa-heart"></i>
+        <span>alternate-reverse</span>
+      </li>
+    </ul>
+  </body>
+</html>

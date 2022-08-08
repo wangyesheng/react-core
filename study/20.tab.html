@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #2c2c54;
+      }
+
+      ul.tab {
+        color: #fff;
+        padding: 10px;
+        position: relative;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        min-width: 300px;
+      }
+
+      ul.tab > li {
+        flex: 1;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 1.2em;
+        position: relative;
+        cursor: pointer;
+      }
+
+      ul.tab > li::after {
+        content: "";
+        width: 100%;
+        height: 5px;
+        border-radius: 5px;
+        background-color: transparent;
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        transform: scaleX(0);
+        transition: 0.5s;
+      }
+
+      ul.tab > li.is-active::after {
+        background-color: #ff793f;
+        transform: scaleX(0.333333);
+      }
+
+      ul.tab > li:hover:not(.is-active):after {
+        background-color: #fff;
+        transform: scaleX(0.333333);
+      }
+
+      ul.tab > li.is-active {
+        color: #ff793f;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="tab">
+      <li class="is-active">home</li>
+      <li>video</li>
+      <li>mall</li>
+    </ul>
+  </body>
+</html>

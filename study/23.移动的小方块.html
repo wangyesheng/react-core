@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css"
+    />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #2c2c54;
+      }
+      .wrap {
+        width: 400px;
+        height: 400px;
+        border: 2px solid #fff;
+      }
+      .rect {
+        width: 100px;
+        height: 100px;
+        background: #ff793f;
+        animation-name: jump;
+        animation-duration: 5s;
+      }
+
+      @keyframes jump {
+        25% {
+          transform: translateX(300px);
+        }
+
+        50% {
+          transform: translate(300px, 300px);
+        }
+
+        75% {
+          transform: translateY(300px);
+        }
+
+        /* 定义共同的样式，不会覆盖之前相同百分比定义的属性，组合的概念 */
+        25%,
+        50% {
+          background: #706fd3;
+          border-radius: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="rect"></div>
+    </div>
+  </body>
+</html>

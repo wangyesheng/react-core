@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="never" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #2c2c54;
+      }
+
+      .container {
+        width: 200px;
+        height: 200px;
+        background-color: #ff7675;
+        position: relative;
+        transform: rotate(45deg) scale(0.5);
+        opacity: 0.5;
+        animation-name: scale;
+        animation-duration: 2s;
+        /* 无限循环 */
+        animation-iteration-count: infinite;
+      }
+
+      @keyframes scale {
+        20% {
+          transform: rotate(45deg) scale(1);
+          opacity: 1;
+        }
+        40% {
+          transform: rotate(45deg) scale(0.5);
+          opacity: 0.5;
+        }
+        60% {
+          transform: rotate(45deg) scale(1);
+          opacity: 1;
+        }
+        80% {
+          transform: rotate(45deg) scale(0.5);
+          opacity: 0.5;
+        }
+        to {
+          transform: rotate(45deg) scale(1);
+          opacity: 1;
+        }
+      }
+
+      .container::before {
+        content: "";
+        width: 200px;
+        height: 200px;
+        background-color: #ff7675;
+        border-radius: 50%;
+        position: absolute;
+        transform: translateX(-100px);
+      }
+
+      .container::after {
+        content: "";
+        width: 200px;
+        height: 200px;
+        background-color: #ff7675;
+        border-radius: 50%;
+        position: absolute;
+        transform: translateY(-100px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container"></div>
+  </body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css"
+    />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #2c2c54;
+      }
+
+      .wrap {
+        width: 400px;
+        height: 400px;
+        border: 2px solid #fff;
+      }
+
+      .rect {
+        width: 100px;
+        height: 100px;
+        background: #ff793f;
+        /* 多个组合的动画名 */
+        animation-name: translate, background, radius;
+        /* 多个动画名对应的执行动画时间，假设动画名个数大于时间个数；则多出的第一个动画名对应的执行时间从头开始依次推算 */
+        animation-duration: 5s, 2s, 3s;
+      }
+
+      @keyframes translate {
+        25% {
+          transform: translateX(300px);
+        }
+
+        50% {
+          transform: translate(300px, 300px);
+        }
+
+        75% {
+          transform: translateY(300px);
+        }
+      }
+
+      @keyframes background {
+        25% {
+          background: #706fd3;
+        }
+
+        50% {
+          background-color: #34ace0;
+        }
+
+        75% {
+          background: #33d9b2;
+        }
+      }
+
+      @keyframes radius {
+        25% {
+          border-radius: 50%;
+        }
+
+        50% {
+          border-radius: 0;
+        }
+
+        75% {
+          border-radius: 50%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="rect"></div>
+    </div>
+  </body>
+</html>

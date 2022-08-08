@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="never" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css"
+    />
+    <link rel="stylesheet" href="css/reset.css" />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #2c2c54;
+      }
+
+      .ball {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: #05c46b;
+        /* 动画名称 动画方向（来回都有过渡效果） 动画重复次数（一直执行） 动画起始的状态在0帧，结束之后在结束帧（backwards + forwards） 动画运行2s 延时两秒*/
+        /* animation-name  animation-direction animation-iteration-count animation-fill-mode animation-duration animation-delay */
+        animation: scale alternate infinite both 2s 2s;
+      }
+
+      @keyframes scale {
+        from {
+          transform: scale(0);
+        }
+
+        to {
+          transform: scale(1.5);
+        }
+      }
+
+      .wrap {
+        width: 100px;
+        height: 30px;
+        background: #f53b57;
+        border-radius: 5px;
+        position: relative;
+        animation: scale alternate infinite both 2s 2s;
+      }
+
+      .wrap::after {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-radius: 2px;
+        background: #f53b57;
+        position: absolute;
+        top: 80%;
+        left: 50%;
+        transform: translateX(-50%) rotate(45deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ball"></div>
+    <div class="wrap"></div>
+  </body>
+</html>

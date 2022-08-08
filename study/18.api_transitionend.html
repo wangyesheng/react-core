@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #2c2c54;
+      }
+
+      .wrap {
+        width: 200px;
+        height: 200px;
+        border-radius: 5px;
+        background-color: #ff793f;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2em;
+        position: relative;
+      }
+
+      .wrap::before {
+        content: "DNA-UI";
+        color: #fff;
+        transition: 2s;
+      }
+
+      .wrap:hover::before {
+        transform: rotate(360deg);
+      }
+
+      .wrap::after {
+        content: "Welcome DNA-UI";
+        color: #fff;
+        position: absolute;
+        left: 0;
+        bottom: -50px;
+        transform: translateX(-999px);
+        transition: 1s;
+      }
+
+      .move.wrap::after {
+        transform: translateX(0);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap"></div>
+    <script>
+      const el = document.querySelector(".wrap");
+      el.addEventListener("transitionend", (e) => {
+        el.className = "wrap move";
+      });
+    </script>
+  </body>
+</html>

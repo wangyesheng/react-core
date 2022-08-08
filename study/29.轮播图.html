@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="never" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <style>
+      body {
+        display: grid;
+        background: #2c2c54;
+      }
+
+      .swiper {
+        width: 400px;
+        height: 200px;
+        align-self: center;
+        justify-self: center;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .inner {
+        width: 1200px;
+        height: 200px;
+        display: grid;
+        /* 1行3列，每列400px */
+        grid-template: 1fr / repeat(3, 400px);
+        animation-name: swiper;
+        animation-duration: 4s;
+        animation-timing-function: steps(3, end);
+        animation-iteration-count: infinite;
+        cursor: pointer;
+      }
+
+      .inner:hover,
+      .inner:hover + ul::after {
+        animation-play-state: paused;
+      }
+
+      .inner > div {
+        overflow: hidden;
+      }
+
+      .inner > div > img {
+        width: 100%;
+      }
+
+      @keyframes swiper {
+        to {
+          transform: translateX(-1200px);
+        }
+      }
+
+      @keyframes slider {
+        to {
+          transform: translateX(150px);
+        }
+      }
+
+      ul {
+        list-style: none;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        left: 50%;
+        bottom: 10px;
+        transform: translateX(-50%);
+        display: grid;
+        grid-template: 1fr / repeat(3, 1fr);
+        justify-items: center;
+        width: 150px;
+      }
+
+      li {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.5);
+        display: grid;
+        justify-items: center;
+        align-items: center;
+      }
+
+      ul::after {
+        content: "";
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #f53b57;
+        position: absolute;
+        top: 0;
+        left: 10px;
+        z-index: -1;
+        animation-name: slider;
+        animation-duration: 4s;
+        animation-timing-function: steps(3, end);
+        animation-iteration-count: infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="swiper">
+      <div class="inner">
+        <div>
+          <img src="img/phos/1.jpeg" alt="" />
+        </div>
+        <div>
+          <img src="img/phos/2.jpeg" alt="" />
+        </div>
+        <div>
+          <img src="img/phos/3.jpg" alt="" />
+        </div>
+      </div>
+      <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+      </ul>
+    </div>
+  </body>
+</html>

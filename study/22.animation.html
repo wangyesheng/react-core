@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css"
+    />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #2c2c54;
+      }
+      .wrap {
+        width: 100px;
+        height: 100px;
+        background: #fff;
+        animation-name: jump;
+        animation-duration: 5s;
+      }
+
+      @keyframes jump {
+        0% {
+          background-color: #fff;
+        }
+
+        /* 30% {
+          transform: scale(2);
+        }
+
+        50% {
+          background-color: #706fd3;
+        }
+
+        60% {
+          border-radius: 100%;
+        }
+
+        80% {
+          transform: scale(0.5);
+        } */
+
+        100% {
+          background-color: #ff5252;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap"></div>
+  </body>
+</html>
